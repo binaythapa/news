@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-q4!gfll-fvqw+kbzb&fv_pmw-2pn3^qsqat8kym3jq&s0!@^(r
 DEBUG = True
 
 ALLOWED_HOSTS = ['sarlahinews.com', 'www.sarlahinews.com']
-
+#ALLOWED_HOSTS = []
 
 # Application definition
 
