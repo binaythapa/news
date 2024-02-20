@@ -78,10 +78,22 @@ WSGI_APPLICATION = 'news_portal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+'''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'sarlahinews_sarlahi',
+        'USER': 'sarlahinews_sarlahi',
+        'PASSWORD': 'LisNepal#20',
+        'HOST': 'localhost',   # Or the IP address of your MySQL server
+        'PORT': '3306',        # Default MySQL port
     }
 }
 
@@ -121,7 +133,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_URL = '/static/'
+STATIC_URL = '/staticfiles/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 '''
