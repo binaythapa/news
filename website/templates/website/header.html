@@ -14,7 +14,7 @@
                 <a class="nav-link active" href="{% url 'home' %}"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
             </li>
             {% for category in categories %}
-                {% if category.is_menu %}
+                
                     {% if not category.parent %}
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ category.id }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -26,7 +26,7 @@
                                 {% endfor %}
                             </div>
                         </li>
-                    {% endif %}
+                  
                 {% endif %}
             {% endfor %}
         </ul>
