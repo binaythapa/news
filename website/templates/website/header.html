@@ -2,8 +2,8 @@
 <!-- header.html -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">
-        <img src="{% static 'website/logo.png' %}" alt="My image" width="75">
-        SarlahiNews
+        <img src="{% static 'website/images/logo.jpeg' %}" alt="My image" width="75">
+        
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,7 @@
             {% endfor %}
         </ul>
         <ul class="navbar-nav ml-auto">
-            <span id="datetime" class="navbar-text ml-auto"></span>
+            
             {% if user.is_authenticated %}
                 <!-- Display user information if authenticated -->
                 <li class="nav-item">
@@ -54,18 +54,6 @@
 </nav>
 
 <script>
-// Function to update datetime and progress every second
-function updateDateTime() {
-    var now = new Date();
-    var datetimeElement = document.getElementById('datetime');
 
-    // Update datetime
-    datetimeElement.textContent = now.toLocaleString();
-}
-
-// Update datetime initially
-updateDateTime();
-
-// Update datetime every second
-setInterval(updateDateTime, 1000);
 </script>
+
