@@ -7,17 +7,11 @@
     <div class="col-md-8 offset-md-2">
         <div class="card">
             {% if article.image %}
-            <img src="{{ article.image.url }}" class="card-img-top mt-3" alt="Article Image">
+            <img src="{{ article.image.url }}" class="card-img-top mt-3 article-image" alt="Article Image">
             {% endif %}
             <div class="card-body">
                 <h4 class="card-title"> {{ article.title }}</h4> 
-                <i class="fa fa-eye"></i>{{ view_count }} 
-                
-                
-                    <i class="fa fa-folder"></i>{{ article.category }}
-                
-
-                
+                <i class="fa fa-eye"></i>{{ view_count }}    
                 <p class="card-text">{{ article.content }}</p>
             </div>
             <div class="card-footer bg-light">
@@ -29,7 +23,7 @@
                     </div>
                     
                     <div class="col-md-4">
-                        <i class="fa fa-tags"></i> Tags:
+                        <i class="fa fa-tags"></i>
                         {% for tag in article.tags.all %}
                             <span class="badge badge-primary">{{ tag.name }}</span>
                         {% endfor %}

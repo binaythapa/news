@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}News Portal{% endblock %}</title>
+    <title>{% block title %}SarlahiNews{% endblock %}</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -13,17 +13,9 @@
 
     <!-- Include Facebook SDK -->
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0" nonce="YOUR_NONCE_VALUE"></script>
-    <link rel="shortcut icon" href="{% static 'website/favicon.ico' %}" />
-
-    <!-- Inline CSS -->
-    <style>
-        /* Add your inline CSS styles here */
-        body {
-            font-family: Arial, sans-serif;
-            /* Example style */
-        }
-    </style>
-
+    <link rel="shortcut icon" href="{% static 'website/images/favicon.ico' %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'website/css/styles.css' %}">
+   
     <!-- Meta Tags for Facebook Open Graph -->
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
     <meta property="og:title" content="{{ article.title }}">
