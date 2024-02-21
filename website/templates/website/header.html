@@ -14,29 +14,24 @@
                 <a class="nav-link active" href="{% url 'home' %}"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
             </li>
             {% for category in categories %}
-                {% if not category.parent %}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ category.id }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            {{ category.name }}
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown{{ category.id }}">
-                            {% for subcategory in category.children.all %}
-                                <a class="dropdown-item" href="{% url 'category_detail' subcategory.id %}">{{ subcategory.name }}</a>
-                            {% endfor %}
-                        </div>
-                    </li>
+                {% if category.is_menu %}
+                    {% if not category.parent %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ category.id }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ category.name }}
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown{{ category.id }}">
+                                {% for subcategory in category.subcategories.all %}
+                                    <a class="dropdown-item" href="{% url 'category_detail' subcategory.id %}">{{ subcategory.name }}</a>
+                                {% endfor %}
+                            </div>
+                        </li>
+                    {% endif %}
                 {% endif %}
             {% endfor %}
-        </ul>   
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <!-- Rest of your menu items -->
+        </ul>
         <ul class="navbar-nav ml-auto">
-           <!-- Show datetime and progress in seconds near menu button -->
-    <span id="datetime" class="navbar-text ml-auto"></span>
+            <span id="datetime" class="navbar-text ml-auto"></span>
             {% if user.is_authenticated %}
                 <!-- Display user information if authenticated -->
                 <li class="nav-item">
@@ -56,7 +51,6 @@
             {% endif %}
         </ul>
     </div>
-    </div>
 </nav>
 
 <script>
@@ -64,19 +58,14 @@
 function updateDateTime() {
     var now = new Date();
     var datetimeElement = document.getElementById('datetime');
-    var progressElement = document.getElementById('progress');
 
     // Update datetime
     datetimeElement.textContent = now.toLocaleString();
-
-    // Update progress in seconds
-    var progress = now.getSeconds() / 60 * 100; // Calculate progress in seconds (assuming 60 seconds per minute)
-    //progressElement.textContent = 'Progress: ' + progress.toFixed(2) + '%'; // Round progress to two decimal places
 }
 
-// Update datetime and progress initially
+// Update datetime initially
 updateDateTime();
 
-// Update datetime and progress every second
+// Update datetime every second
 setInterval(updateDateTime, 1000);
 </script>
