@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'news_portal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-
+'''
 
 DATABASES = {
     'default': {
@@ -90,8 +90,8 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sarlahinews_sarlahi',
-        'USER': 'sarlahinews_sarlahi',
+        'NAME': 'merosath_merosath',
+        'USER': 'merosath_merosath',
         'PASSWORD': 'LisNepal#20',
         'HOST': 'localhost',   # Or the IP address of your MySQL server
         'PORT': '3306',        # Default MySQL port
@@ -100,7 +100,7 @@ DATABASES = {
         },
     }
 }
-'''
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
