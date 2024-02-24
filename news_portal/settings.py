@@ -78,8 +78,8 @@ WSGI_APPLICATION = 'news_portal.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-'''
 
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -95,8 +95,8 @@ DATABASES = {
         'PASSWORD': 'LisNepal#20',
         'HOST': 'localhost',   # Or the IP address of your MySQL server
         'PORT': '3306',        # Default MySQL port
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+         'OPTIONS': {
+            'charset': 'utf8mb4',
         },
     }
 }
