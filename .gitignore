@@ -3,5 +3,17 @@ env
 *.dll
 *.pyc
 db.sqlite3
+*.py
+# Ignore cache files
+*~
+*.bak
+*.swp
+*.tmp
+*.temp
+.DS_Store
 
-
+# Ignore cache directories
+__pycache__/
+.pytest_cache/
+node_modules/
+.sass-cache/
