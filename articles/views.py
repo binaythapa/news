@@ -30,7 +30,7 @@ def edit_article(request, id):
 def article_detail(request, id):
     articles = Article.objects.all()
     article = get_object_or_404(Article, pk=id)
-    category= Category.objects.all() 
+    category= Category.objects.filter(is_menu=True) 
     view, created = View.objects.get_or_create(article=article)
     view.count += 1   
     view.save()
