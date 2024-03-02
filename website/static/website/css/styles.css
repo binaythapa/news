@@ -26,7 +26,4 @@
     height: 400px;
 }
 
-/* styles.css */
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
+

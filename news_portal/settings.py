@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-q4!gfll-fvqw+kbzb&fv_pmw-2pn3^qsqat8kym3jq&s0!@^(r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sarlahinews.com', 'www.sarlahinews.com']
+ALLOWED_HOSTS = ['merosath.com', 'www.merosath.com']
 #ALLOWED_HOSTS = []
 
 # Application definition
@@ -90,13 +90,13 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'sarlahinews_sarlahi',
-        'USER': 'sarlahinews_sarlahi',
+        'NAME': 'merosath_merosath',
+        'USER': 'merosath_merosath',
         'PASSWORD': 'LisNepal#20',
         'HOST': 'localhost',   # Or the IP address of your MySQL server
         'PORT': '3306',        # Default MySQL port
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+         'OPTIONS': {
+            'charset': 'utf8mb4',
         },
     }
 }

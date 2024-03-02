@@ -56,16 +56,6 @@ class Comment(models.Model):
     def __str__(self):
         return f'{self.author.username}\'s comment on {self.article.title}'
 
-
-class Like(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='likes')
-    article = models.ForeignKey(Article, on_delete=models.CASCADE)
-    liked_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f'{self.user.username} liked {self.article.title}'
-
-
 class View(models.Model):       
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
     count = models.IntegerField(default=0)
