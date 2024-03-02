@@ -25,18 +25,7 @@ def edit_article(request, id):
         form = ArticleForm(instance=article)
     return render(request, 'articles/create.html', {'form': form})
 
-'''
-def edit_article(request, id):
-    article_instance = Article.objects.get(pk=id)
-    if request.method == 'POST':
-        form = ArticleForm(request.POST, request.FILES, instance=article_instance)
-        if form.is_valid():
-            form.save()
-            return redirect('article_detail', article_id=id)
-    else:
-        form = ArticleForm(instance=article_instance)
-    return render(request, 'create.html', {'form': form})
-'''
+
 
 def article_detail(request, id):
     articles = Article.objects.all()
