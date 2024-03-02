@@ -9,7 +9,7 @@ from articles.models import Article,Category
 # Create your views here.
 def welcome(request):
     articles = Article.objects.all()
-    category= Category.objects.all()
+    category= Category.objects.all(is_menu=True)
     return render(request, "articles/home.html",{"articles":articles,"categories":category})
 
 def signup(request):
