@@ -20,6 +20,11 @@
     /* Example style */
 }
 
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 /* styles.css */
 .article-image {
     max-width: 100%;
