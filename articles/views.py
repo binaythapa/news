@@ -2,6 +2,12 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import *
 from .forms import *
 
+# Create your views here.
+def home(request):
+    articles = Article.objects.all()
+    category= Category.objects.filter(is_menu=True)
+    return render(request, "articles/home.html",{"articles":articles,"categories":category})
+
 #article
 def article(request):
     if request.method== "POST":
