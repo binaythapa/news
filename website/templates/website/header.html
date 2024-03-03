@@ -14,22 +14,21 @@
                 <a class="nav-link active" href="{% url 'home' %}"><i class="fa fa-home"></i> Home <span class="sr-only">(current)</span></a>
             </li>
             {% for category in categories %}
-                
-                    {% if not category.parent %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ category.id }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {{ category.name }}
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown{{ category.id }}">
-                                {% for subcategory in category.subcategories.all %}
-                                    <a class="dropdown-item" href="{% url 'category_detail' subcategory.id %}">{{ subcategory.name }}</a>
-                                {% endfor %}
-                            </div>
-                        </li>
-                  
+                {% if not category.parent %}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ category.id }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            {{ category.name }}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown{{ category.id }}">
+                            {% for subcategory in category.category_set.all %}
+                                <a class="dropdown-item" href="#">{{ subcategory.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </li>
                 {% endif %}
             {% endfor %}
         </ul>
+        
         <ul class="navbar-nav ml-auto">
             
             {% if user.is_authenticated %}
