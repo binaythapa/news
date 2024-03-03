@@ -16,12 +16,13 @@
             {% for category in categories %}
                 {% if not category.parent %}
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown{{ category.id }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="{% url 'category_detail' category.id %}" id="navbarDropdown{{ category.id }}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ category.name }}
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown{{ category.id }}">
                             {% for subcategory in category.category_set.all %}
-                                <a class="dropdown-item" href="#">{{ subcategory.name }}</a>
+                                <a class="dropdown-item" href="{% url 'category_detail' subcategory.id %}">
+                                    {{ subcategory.name }}</a>
                             {% endfor %}
                         </div>
                     </li>
@@ -45,7 +46,7 @@
                     <a class="nav-link" href="{% url 'login' %}">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+                    <a class="nav-link" href="#">Signup</a>
                 </li>
             {% endif %}
         </ul>

@@ -11,7 +11,7 @@ urlpatterns = [
     path('edit/<int:id>/', edit_article, name='edit_article'),
 
     path('category/', category, name='category'),  
-    path('category/<int:id>',category_detail, name='category_detail'),
+    path('category/<int:id>/',category_detail, name='category_detail'),
     path('category/delete/<int:id>',category_delete, name='category_delete'),
 
     path('tag/', tag, name='tag'),  

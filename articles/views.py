@@ -47,6 +47,8 @@ def article_delete(request, id):
     data.delete()
     return redirect("/")
 
+
+
 #category
 def category(request):
     if request.method== "POST":
@@ -59,8 +61,13 @@ def category(request):
     return render(request, 'articles/create.html', {'form':form})
 
 def category_detail(request,id):
-    data = get_object_or_404(Category, pk=id)
-    return render(request, "articles/article_detail.html", {'data':data})
+    category = get_object_or_404(Category, pk=id)
+    articles = Article.objects.filter(category=category)
+    print(category)
+    print(articles)
+    categories = Category.objects.all()
+    print(categories)
+    return render(request, "articles/category_detail.html", {"articles":articles,"categories":categories,"category":category})
 
 def category_delete(request, id):    
     data = get_object_or_404(Category, pk=id)
