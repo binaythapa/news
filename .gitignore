@@ -3,6 +3,7 @@ env
 *.dll
 *.pyc
 db.sqlite3
+settings.py
 # Ignore cache files
 *~
 *.bak
