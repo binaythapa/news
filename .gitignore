@@ -10,7 +10,7 @@ db.sqlite3
 *.tmp
 *.temp
 .DS_Store
-
+media
 # Ignore cache directories
 __pycache__/
 .pytest_cache/
