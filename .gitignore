@@ -21,3 +21,4 @@ node_modules/
 *.db
 */migrations/*.py
 */migrations/*.pyc
+news_portal/settings.py
