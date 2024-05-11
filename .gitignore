@@ -1,4 +1,4 @@
-env
+venv/
 *.exe
 *.dll
 *.pyc
@@ -22,3 +22,4 @@ node_modules/
 */migrations/*.py
 */migrations/*.pyc
 news_portal/settings.py
+
