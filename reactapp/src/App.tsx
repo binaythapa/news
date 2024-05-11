@@ -1,19 +1,30 @@
 import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ChakraProvider } from "@chakra-ui/react";
 import "./App.css";
-import AddCategory from "./components/category/AddEditCategory";
-// import GetCategory from "./components/category/GetCategory";
+
 import GetCategory from "./components/category/GetCategory";
-// import CategoryComponent from './components/CategoryComponent';
+import AddEditCategory from "./components/category/AddEditCategory";
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/addcategory",
+      element: <AddEditCategory editMode={false} />,
+    },
+    {
+      path: "/getcategory",
+      element: <GetCategory />,
+    },
+    {
+      path: "/updatecategory/:id",
+      element: <AddEditCategory editMode={true} />,
+    },
+  ]);
   return (
     <>
-      <AddCategory editMode={false} categoryId={17} />
-      <GetCategory />
+      <RouterProvider router={router} />
     </>
-    // <ChakraProvider>
-    // </ChakraProvider>
   );
 }
 

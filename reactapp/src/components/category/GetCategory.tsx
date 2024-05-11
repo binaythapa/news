@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   Container,
   Center,
@@ -30,7 +31,8 @@ const GetCategory = () => {
   const handleDelete = async (categoryId: number) => {
     try {
       await axios.delete(`http://127.0.0.1:8000/api/category/${categoryId}/`);
-      fetchCategories();
+      const data: any = await fetchCategories();
+      setCategories(data);
     } catch (error) {
       console.error("Error: ", error);
     }
@@ -63,9 +65,11 @@ const GetCategory = () => {
                   <Td>{category.is_menu ? "Yes" : "No"}</Td>
                   <Td>{category.parent ? category.parent : "No"} </Td>
                   <Td>
-                    <Button marginEnd={1} colorScheme="yellow" size="xs">
-                      Edit
-                    </Button>
+                    <Link to={`/updatecategory/${category.id}`}>
+                      <Button marginEnd={1} colorScheme="yellow" size="xs">
+                        Edit
+                      </Button>
+                    </Link>
                     <Button
                       colorScheme="red"
                       size="xs"

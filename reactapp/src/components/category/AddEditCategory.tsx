@@ -11,13 +11,16 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { fetchCategories } from "./fetchCategories";
+import { useParams } from "react-router-dom";
 
 interface Props {
   editMode: Boolean;
-  categoryId?: Number;
+  categoryId?: String;
 }
 
 const AddEditCategory = ({ editMode, categoryId }: Props) => {
+  const { id } = useParams<{ id: string }>();
+  categoryId = id;
   const [newCategory, setNewCategory] = useState({
     name: "",
     is_menu: false,
@@ -45,8 +48,9 @@ const AddEditCategory = ({ editMode, categoryId }: Props) => {
       setCategories(data);
     };
     getCategories();
-
-    fetchCategory();
+    if (editMode) {
+      fetchCategory(id);
+    }
   }, []);
 
   const handleNameChange = (e: any) => {
