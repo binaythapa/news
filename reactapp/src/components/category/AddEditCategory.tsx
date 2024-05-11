@@ -21,6 +21,7 @@ interface Props {
 const AddEditCategory = ({ editMode, categoryId }: Props) => {
   const { id } = useParams<{ id: string }>();
   categoryId = id;
+
   const [newCategory, setNewCategory] = useState({
     name: "",
     is_menu: false,
@@ -74,6 +75,7 @@ const AddEditCategory = ({ editMode, categoryId }: Props) => {
       setEditCategory({ ...editCategory, parent: e.target.value });
     } else {
       setNewCategory({ ...newCategory, parent: e.target.value });
+      // console.log(newCategory);
     }
   };
 
@@ -128,7 +130,9 @@ const AddEditCategory = ({ editMode, categoryId }: Props) => {
           </Checkbox>
           <Select
             placeholder="Select parent"
-            value={editMode ? editCategory.parent || "" : ""}
+            value={
+              editMode ? editCategory.parent || "" : newCategory.parent || ""
+            }
             onChange={handleParentChange}
           >
             {categories.map((category: any) => (

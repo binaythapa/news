@@ -13,7 +13,7 @@ function App() {
       element: <AddEditCategory editMode={false} />,
     },
     {
-      path: "/getcategory",
+      path: "/viewcategory",
       element: <GetCategory />,
     },
     {
