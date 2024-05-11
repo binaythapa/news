@@ -14,22 +14,20 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
+import { fetchCategories } from "./fetchCategories";
+
 const GetCategory = () => {
   const [categories, setCategories] = useState([]);
-  const fetchCategories = async () => {
-    try {
-      const response = await axios.get("http://127.0.0.1:8000/api/category/");
-      setCategories(response.data);
-    } catch (error) {
-      console.error("Error: ", error);
-    }
-  };
 
   useEffect(() => {
-    fetchCategories();
+    const getCategories = async () => {
+      const data: any = await fetchCategories();
+      setCategories(data);
+    };
+    getCategories();
   }, []);
 
-  const handleDelete = async (categoryId) => {
+  const handleDelete = async (categoryId: number) => {
     try {
       await axios.delete(`http://127.0.0.1:8000/api/category/${categoryId}/`);
       fetchCategories();
@@ -50,6 +48,7 @@ const GetCategory = () => {
           <Table variant="simple">
             <Thead>
               <Tr>
+                <Th>Id</Th>
                 <Th>Category</Th>
                 <Th>Is menu</Th>
                 <Th>Parent</Th>
@@ -57,9 +56,9 @@ const GetCategory = () => {
               </Tr>
             </Thead>
             <Tbody>
-              {console.log(categories)}
-              {categories.map((category) => (
+              {categories.map((category: any) => (
                 <Tr key={category.id}>
+                  <Td>{category.id}</Td>
                   <Td>{category.name}</Td>
                   <Td>{category.is_menu ? "Yes" : "No"}</Td>
                   <Td>{category.parent ? category.parent : "No"} </Td>
