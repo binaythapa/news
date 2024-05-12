@@ -12,6 +12,7 @@ import {
 import axios from "axios";
 import { fetchCategories } from "./fetchCategories";
 import { useParams } from "react-router-dom";
+import CustomToast from "../CustomToast";
 
 interface Props {
   editMode: Boolean;
@@ -19,6 +20,7 @@ interface Props {
 }
 
 const AddEditCategory = ({ editMode, categoryId }: Props) => {
+  const displayToast = CustomToast();
   const { id } = useParams<{ id: string }>();
   categoryId = id;
 
@@ -92,6 +94,10 @@ const AddEditCategory = ({ editMode, categoryId }: Props) => {
           is_menu: false,
           parent: null,
         });
+        displayToast({
+          messageStatus: "success",
+          message: "Category Updated Successfully !",
+        });
       } else {
         console.log(newCategory);
         await axios.post("http://127.0.0.1:8000/api/category/", newCategory);
@@ -100,9 +106,17 @@ const AddEditCategory = ({ editMode, categoryId }: Props) => {
           is_menu: false,
           parent: null,
         });
+        displayToast({
+          messageStatus: "success",
+          message: "Category Added Successfully !",
+        });
       }
     } catch (error) {
       console.error("Error ", error);
+      displayToast({
+        messageStatus: "error",
+        message: "Error Occured !",
+      });
     }
   };
   return (

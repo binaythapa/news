@@ -16,8 +16,10 @@ import {
 import axios from "axios";
 import { useState } from "react";
 import { fetchCategories } from "./fetchCategories";
+import CustomToast from "../CustomToast";
 
 const GetCategory = () => {
+  const displayToast = CustomToast();
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
@@ -33,8 +35,16 @@ const GetCategory = () => {
       await axios.delete(`http://127.0.0.1:8000/api/category/${categoryId}/`);
       const data: any = await fetchCategories();
       setCategories(data);
+      displayToast({
+        messageStatus: "success",
+        message: "Category Deleted Successfully !",
+      });
     } catch (error) {
       console.error("Error: ", error);
+      displayToast({
+        messageStatus: "success",
+        message: "Error Occured !",
+      });
     }
   };
 

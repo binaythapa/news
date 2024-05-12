@@ -12,6 +12,7 @@ import {
 import axios from "axios";
 import { fetchTags } from "./fetchTags";
 import { useParams } from "react-router-dom";
+import CustomToast from "../CustomToast";
 
 interface Props {
   editMode: Boolean;
@@ -19,6 +20,7 @@ interface Props {
 }
 
 const AddEditTag = ({ editMode, tagId }: Props) => {
+  const displayToast = CustomToast();
   const { id } = useParams<{ id: string }>();
   tagId = id;
 
@@ -64,14 +66,26 @@ const AddEditTag = ({ editMode, tagId }: Props) => {
         setEditTag({
           name: "",
         });
+        displayToast({
+          messageStatus: "success",
+          message: "Tag Updated Successfully !",
+        });
       } else {
         await axios.post("http://127.0.0.1:8000/api/tag/", newTag);
         setNewTag({
           name: "",
         });
+        displayToast({
+          messageStatus: "success",
+          message: "Tag Added Successfully !",
+        });
       }
     } catch (error) {
       console.error("Error ", error);
+      displayToast({
+        messageStatus: "error",
+        message: "Error occured !",
+      });
     }
   };
   return (

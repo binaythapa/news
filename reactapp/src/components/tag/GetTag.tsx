@@ -16,8 +16,10 @@ import {
 import axios from "axios";
 import { useState } from "react";
 import { fetchTags } from "./fetchTags";
+import CustomToast from "../CustomToast";
 
 const GetTag = () => {
+  const displayToast = CustomToast();
   const [tags, setTags] = useState([]);
 
   useEffect(() => {
@@ -33,8 +35,16 @@ const GetTag = () => {
       await axios.delete(`http://127.0.0.1:8000/api/tag/${tagId}/`);
       const data: any = await fetchTags();
       setTags(data);
+      displayToast({
+        messageStatus: "success",
+        message: "Tag Deleted Successfully !",
+      });
     } catch (error) {
       console.error("Error: ", error);
+      displayToast({
+        messageStatus: "error",
+        message: "Error deleting tag !",
+      });
     }
   };
 
