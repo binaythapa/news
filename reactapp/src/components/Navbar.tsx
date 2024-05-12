@@ -1,26 +1,79 @@
 import React from "react";
-import { Box, Flex, Button } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Box, Flex, Image } from "@chakra-ui/react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
+  const location = useLocation();
+
   return (
     <Box bg="blue.500" px={4}>
-      <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
+      <Flex alignItems={"stretch"} justifyContent={"space-between"}>
+        {/* Logo */}
         <Link to="/">
-          <Button colorScheme="white" fontSize="xl" fontWeight="bold">
-            Merosath
-          </Button>
+          <Image src="/logo.svg" boxSize="80px" alt="Logo" />
         </Link>
-        <Flex alignItems={"center"}>
+
+        {/* Menu */}
+        <Flex alignItems={"stretch"}>
           <Link to="/category">
-            <Button colorScheme="white" ml={10}>
+            <Box
+              as="button"
+              color="white"
+              fontSize="xl"
+              w="150px"
+              bg={location.pathname === "/category" ? "blue.400" : "blue.500"}
+              ml={10}
+              h="100%"
+              p={4}
+            >
               Category
-            </Button>
+            </Box>
           </Link>
-          <Link to="/contact">
-            <Button colorScheme="white" ml={10}>
+          <Link to="/article">
+            <Box
+              as="button"
+              color="white"
+              fontSize="xl"
+              w="150px"
+              bg={location.pathname === "/article" ? "blue.400" : "blue.500"}
+              ml={10}
+              h="100%"
+              p={4}
+            >
               Article
-            </Button>
+            </Box>
+          </Link>
+        </Flex>
+
+        {/* Login/Signup */}
+        <Flex alignItems={"stretch"}>
+          <Link to="/login">
+            <Box
+              as="button"
+              color="white"
+              fontSize="xl"
+              w="100px"
+              bg={location.pathname === "/login" ? "blue.400" : "blue.500"}
+              ml={10}
+              h="100%"
+              p={4}
+            >
+              Login
+            </Box>
+          </Link>
+          <Link to="/signup">
+            <Box
+              as="button"
+              color="white"
+              fontSize="xl"
+              w="100px"
+              bg={location.pathname === "/signup" ? "blue.400" : "blue.500"}
+              ml={10}
+              h="100%"
+              p={4}
+            >
+              Signup
+            </Box>
           </Link>
         </Flex>
       </Flex>
