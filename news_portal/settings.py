@@ -27,10 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'website',
-    'crispy_forms',
-    'articles',
+    'django.contrib.staticfiles',    
+    'crispy_forms',    
     'api',
     'rest_framework',
     'rest_framework.authtoken',
@@ -85,9 +83,9 @@ DATABASES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'merosath_merosath',
-        'USER': 'merosath_merosath',
-        'PASSWORD': 'LisNepal#20',
+        'NAME': 'mystyle',
+        'USER': 'root',
+        'PASSWORD': 'root',
         'HOST': 'localhost',   # Or the IP address of your MySQL server
         'PORT': '3306',        # Default MySQL port
          'OPTIONS': {
