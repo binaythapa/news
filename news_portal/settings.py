@@ -16,8 +16,8 @@ SECRET_KEY = 'django-insecure-q4!gfll-fvqw+kbzb&fv_pmw-2pn3^qsqat8kym3jq&s0!@^(r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-#ALLOWED_HOSTS = ['merosath.com', 'www.merosath.com']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['merosath.com', 'www.merosath.com']
+#ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -74,7 +74,7 @@ WSGI_APPLICATION = 'news_portal.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -95,7 +95,7 @@ DATABASES = {
         },
     }
 }
-'''
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
