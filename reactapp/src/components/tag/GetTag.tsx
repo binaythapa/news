@@ -53,7 +53,7 @@ const GetTag = () => {
       <Container maxW="50%" padding={5}>
         <Center>
           <Heading as="h4" size="lg">
-            Categories
+            Tags
           </Heading>
         </Center>
         <TableContainer>

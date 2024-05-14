@@ -13,6 +13,7 @@ import axios from "axios";
 import { fetchCategories } from "./fetchCategories";
 import { useParams } from "react-router-dom";
 import CustomToast from "../CustomToast";
+import { fetchCategory } from "./fetchCategory";
 
 interface Props {
   editMode: Boolean;
@@ -49,6 +50,10 @@ const AddEditCategory = ({ editMode, categoryId }: Props) => {
     const getCategories = async () => {
       const data: any = await fetchCategories();
       setCategories(data);
+    };
+    const getCategory = async () => {
+      const data = await fetchCategory(categoryId);
+      setEditCategory(data);
     };
     getCategories();
     if (editMode) {

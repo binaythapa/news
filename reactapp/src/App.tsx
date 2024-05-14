@@ -6,6 +6,9 @@ import Navbar from "./components/Navbar";
 import { ChakraProvider } from "@chakra-ui/react";
 import AddEditTag from "./components/tag/AddEditTag";
 import GetTag from "./components/tag/GetTag";
+import GetArticle from "./components/article/GetArticle";
+import AddEditArticle from "./components/article/AddEditArticle";
+import ViewArticle from "./components/article/ViewArticle";
 
 function App() {
   return (
@@ -13,6 +16,7 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
+          {/* Routes for category  */}
           <Route
             path="/addcategory"
             element={<AddEditCategory editMode={false} />}
@@ -22,12 +26,23 @@ function App() {
             path="/updatecategory/:id"
             element={<AddEditCategory editMode={true} />}
           />
-
+          {/* Routes for tags */}
           <Route path="/addtag" element={<AddEditTag editMode={false} />} />
           <Route path="/viewtag" element={<GetTag />} />
           <Route
             path="/updatetag/:id"
             element={<AddEditTag editMode={true} />}
+          />
+          {/* Routes for article */}
+          <Route
+            path="/addarticle"
+            element={<AddEditArticle editMode={false} />}
+          />
+          <Route path="/viewarticle" element={<GetArticle />} />
+          <Route path="/viewarticle/:id" element={<ViewArticle />} />
+          <Route
+            path="/updatearticle/:id"
+            element={<AddEditArticle editMode={true} />}
           />
         </Routes>
       </Router>

@@ -22,3 +22,4 @@ node_modules/
 */migrations/*.py
 */migrations/*.pyc
 news_portal/settings.py
+venv/

@@ -15,29 +15,37 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
-import { fetchCategories } from "./fetchCategories";
+import { fetchArticles } from "./fetchArticles";
 import CustomToast from "../CustomToast";
 
-const GetCategory = () => {
+const GetArticle = () => {
   const displayToast = CustomToast();
-  const [categories, setCategories] = useState([]);
+
+  const [articles, setArticles] = useState([]);
+
+  const truncate = (str: any, num: Number) => {
+    if (str.length <= num) {
+      return str;
+    }
+    return str.slice(0, num) + "...";
+  };
 
   useEffect(() => {
-    const getCategories = async () => {
-      const data: any = await fetchCategories();
-      setCategories(data);
+    const getArticles = async () => {
+      const data: any = await fetchArticles();
+      setArticles(data);
     };
-    getCategories();
+    getArticles();
   }, []);
 
-  const handleDelete = async (categoryId: number) => {
+  const handleDelete = async (articleId: number) => {
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/category/${categoryId}/`);
-      const data: any = await fetchCategories();
-      setCategories(data);
+      await axios.delete(`http://127.0.0.1:8000/api/article/${articleId}/`);
+      const data: any = await fetchArticles();
+      setArticles(data);
       displayToast({
         messageStatus: "success",
-        message: "Category Deleted Successfully !",
+        message: "Article Deleted Successfully !",
       });
     } catch (error) {
       console.error("Error: ", error);
@@ -50,10 +58,10 @@ const GetCategory = () => {
 
   return (
     <>
-      <Container maxW="50%" padding={5}>
+      <Container maxW="90%" padding={5}>
         <Center>
           <Heading as="h4" size="lg">
-            Categories
+            Articles
           </Heading>
         </Center>
         <TableContainer>
@@ -61,21 +69,27 @@ const GetCategory = () => {
             <Thead>
               <Tr>
                 <Th>Id</Th>
-                <Th>Category</Th>
-                <Th>Is menu</Th>
-                <Th>Parent</Th>
+                <Th>Title</Th>
+                <Th>Content</Th>
+                <Th>Views</Th>
                 <Th>Action</Th>
               </Tr>
             </Thead>
             <Tbody>
-              {categories.map((category: any) => (
-                <Tr key={category.id}>
-                  <Td>{category.id}</Td>
-                  <Td>{category.name}</Td>
-                  <Td>{category.is_menu ? "Yes" : "No"}</Td>
-                  <Td>{category.parent ? category.parent : "No"} </Td>
+              {articles.map((article: any) => (
+                <Tr key={article.id}>
+                  <Td>{article.id}</Td>
+                  <Td>{truncate(article.title, 50)}</Td>
+                  <Td>{truncate(article.content, 50)}</Td>
+                  <Td>{article.views} </Td>
+
                   <Td>
-                    <Link to={`/updatecategory/${category.id}`}>
+                    <Link to={`/viewarticle/${article.id}`}>
+                      <Button marginEnd={1} colorScheme="blue" size="xs">
+                        View
+                      </Button>
+                    </Link>
+                    <Link to={`/updatearticle/${article.id}`}>
                       <Button marginEnd={1} colorScheme="yellow" size="xs">
                         Edit
                       </Button>
@@ -83,7 +97,7 @@ const GetCategory = () => {
                     <Button
                       colorScheme="red"
                       size="xs"
-                      onClick={() => handleDelete(category.id)}
+                      onClick={() => handleDelete(article.id)}
                     >
                       Delete
                     </Button>
@@ -98,4 +112,4 @@ const GetCategory = () => {
   );
 };
 
-export default GetCategory;
+export default GetArticle;
