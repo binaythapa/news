@@ -4,6 +4,7 @@ venv/
 *.pyc
 db.sqlite3
 settings.py
+staticfiles
 # Ignore cache files
 *~
 *.bak
