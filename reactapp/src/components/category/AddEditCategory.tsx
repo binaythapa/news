@@ -154,11 +154,12 @@ const AddEditCategory = ({ editMode, categoryId }: Props) => {
             }
             onChange={handleParentChange}
           >
-            {categories.map((category: any) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
+            {Array.isArray(categories) &&
+              categories.map((category: any) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
           </Select>
           <Button onClick={handleSubmit} colorScheme="blue">
             {editMode ? "Update" : "Add"} Category

@@ -10,7 +10,6 @@ import {
   Select,
   Textarea,
   Image,
-  CheckboxGroup,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
@@ -258,11 +257,12 @@ const AddEditArticle = ({ editMode, articleId }: Props) => {
             }
             onChange={handleCategoryChange}
           >
-            {categories.map((category: any) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
+            {Array.isArray(categories) &&
+              categories.map((category: any) => (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              ))}
           </Select>
           // Populate the tags
           <Select
@@ -276,11 +276,12 @@ const AddEditArticle = ({ editMode, articleId }: Props) => {
             }
             onChange={handleTagsChange}
           >
-            {tags.map((tag: any) => (
-              <option key={tag.id} value={tag.id}>
-                {tag.name}
-              </option>
-            ))}
+            {Array.isArray(tags) &&
+              tags.map((tag: any) => (
+                <option key={tag.id} value={tag.id}>
+                  {tag.name}
+                </option>
+              ))}
           </Select>
           <Button onClick={handleSubmit} colorScheme="blue">
             {editMode ? "Update" : "Add"} Article
