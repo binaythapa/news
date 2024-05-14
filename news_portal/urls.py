@@ -4,8 +4,7 @@ from django.conf.urls.static import static
 from django.contrib import admin
 #from django.urls import path
 from django.urls import path, include
-from website.views import *
-from articles.views import *
+
 from .views import *
 
 
@@ -13,8 +12,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', index, name='index'),  
-    path('signup', signup, name='signup'),     
-    path('articles/', include('articles.urls')),
+    #path('signup', signup, name='signup'),     
+   
     path('api/', include('api.urls')),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
