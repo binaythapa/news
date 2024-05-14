@@ -15,13 +15,15 @@ const Navbar = () => {
 
         {/* Menu */}
         <Flex alignItems={"stretch"}>
-          <Link to="/category">
+          <Link to="/viewcategory">
             <Box
               as="button"
               color="white"
               fontSize="xl"
               w="150px"
-              bg={location.pathname === "/category" ? "blue.400" : "blue.500"}
+              bg={
+                location.pathname === "/viewcategory" ? "blue.400" : "blue.500"
+              }
               ml={10}
               h="100%"
               p={4}
@@ -29,13 +31,29 @@ const Navbar = () => {
               Category
             </Box>
           </Link>
-          <Link to="/article">
+          <Link to="/viewtag">
             <Box
               as="button"
               color="white"
               fontSize="xl"
               w="150px"
-              bg={location.pathname === "/article" ? "blue.400" : "blue.500"}
+              bg={location.pathname === "/viewtag" ? "blue.400" : "blue.500"}
+              ml={10}
+              h="100%"
+              p={4}
+            >
+              Tag
+            </Box>
+          </Link>
+          <Link to="/viewarticle">
+            <Box
+              as="button"
+              color="white"
+              fontSize="xl"
+              w="150px"
+              bg={
+                location.pathname === "/viewarticle" ? "blue.400" : "blue.500"
+              }
               ml={10}
               h="100%"
               p={4}

@@ -76,34 +76,35 @@ const GetArticle = () => {
               </Tr>
             </Thead>
             <Tbody>
-              {articles.map((article: any) => (
-                <Tr key={article.id}>
-                  <Td>{article.id}</Td>
-                  <Td>{truncate(article.title, 50)}</Td>
-                  <Td>{truncate(article.content, 50)}</Td>
-                  <Td>{article.views} </Td>
+              {Array.isArray(articles) &&
+                articles.map((article: any) => (
+                  <Tr key={article.id}>
+                    <Td>{article.id}</Td>
+                    <Td>{truncate(article.title, 50)}</Td>
+                    <Td>{truncate(article.content, 50)}</Td>
+                    <Td>{article.views} </Td>
 
-                  <Td>
-                    <Link to={`/viewarticle/${article.id}`}>
-                      <Button marginEnd={1} colorScheme="blue" size="xs">
-                        View
+                    <Td>
+                      <Link to={`/viewarticle/${article.id}`}>
+                        <Button marginEnd={1} colorScheme="blue" size="xs">
+                          View
+                        </Button>
+                      </Link>
+                      <Link to={`/updatearticle/${article.id}`}>
+                        <Button marginEnd={1} colorScheme="yellow" size="xs">
+                          Edit
+                        </Button>
+                      </Link>
+                      <Button
+                        colorScheme="red"
+                        size="xs"
+                        onClick={() => handleDelete(article.id)}
+                      >
+                        Delete
                       </Button>
-                    </Link>
-                    <Link to={`/updatearticle/${article.id}`}>
-                      <Button marginEnd={1} colorScheme="yellow" size="xs">
-                        Edit
-                      </Button>
-                    </Link>
-                    <Button
-                      colorScheme="red"
-                      size="xs"
-                      onClick={() => handleDelete(article.id)}
-                    >
-                      Delete
-                    </Button>
-                  </Td>
-                </Tr>
-              ))}
+                    </Td>
+                  </Tr>
+                ))}
             </Tbody>
           </Table>
         </TableContainer>

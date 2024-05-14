@@ -66,26 +66,27 @@ const GetTag = () => {
               </Tr>
             </Thead>
             <Tbody>
-              {tags.map((tag: any) => (
-                <Tr key={tag.id}>
-                  <Td>{tag.id}</Td>
-                  <Td>{tag.name}</Td>
-                  <Td>
-                    <Link to={`/updatetag/${tag.id}`}>
-                      <Button marginEnd={1} colorScheme="yellow" size="xs">
-                        Edit
+              {Array.isArray(tags) &&
+                tags.map((tag: any) => (
+                  <Tr key={tag.id}>
+                    <Td>{tag.id}</Td>
+                    <Td>{tag.name}</Td>
+                    <Td>
+                      <Link to={`/updatetag/${tag.id}`}>
+                        <Button marginEnd={1} colorScheme="yellow" size="xs">
+                          Edit
+                        </Button>
+                      </Link>
+                      <Button
+                        colorScheme="red"
+                        size="xs"
+                        onClick={() => handleDelete(tag.id)}
+                      >
+                        Delete
                       </Button>
-                    </Link>
-                    <Button
-                      colorScheme="red"
-                      size="xs"
-                      onClick={() => handleDelete(tag.id)}
-                    >
-                      Delete
-                    </Button>
-                  </Td>
-                </Tr>
-              ))}
+                    </Td>
+                  </Tr>
+                ))}
             </Tbody>
           </Table>
         </TableContainer>

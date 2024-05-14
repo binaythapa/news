@@ -68,28 +68,29 @@ const GetCategory = () => {
               </Tr>
             </Thead>
             <Tbody>
-              {categories.map((category: any) => (
-                <Tr key={category.id}>
-                  <Td>{category.id}</Td>
-                  <Td>{category.name}</Td>
-                  <Td>{category.is_menu ? "Yes" : "No"}</Td>
-                  <Td>{category.parent ? category.parent : "No"} </Td>
-                  <Td>
-                    <Link to={`/updatecategory/${category.id}`}>
-                      <Button marginEnd={1} colorScheme="yellow" size="xs">
-                        Edit
+              {Array.isArray(categories) &&
+                categories.map((category: any) => (
+                  <Tr key={category.id}>
+                    <Td>{category.id}</Td>
+                    <Td>{category.name}</Td>
+                    <Td>{category.is_menu ? "Yes" : "No"}</Td>
+                    <Td>{category.parent ? category.parent : "No"} </Td>
+                    <Td>
+                      <Link to={`/updatecategory/${category.id}`}>
+                        <Button marginEnd={1} colorScheme="yellow" size="xs">
+                          Edit
+                        </Button>
+                      </Link>
+                      <Button
+                        colorScheme="red"
+                        size="xs"
+                        onClick={() => handleDelete(category.id)}
+                      >
+                        Delete
                       </Button>
-                    </Link>
-                    <Button
-                      colorScheme="red"
-                      size="xs"
-                      onClick={() => handleDelete(category.id)}
-                    >
-                      Delete
-                    </Button>
-                  </Td>
-                </Tr>
-              ))}
+                    </Td>
+                  </Tr>
+                ))}
             </Tbody>
           </Table>
         </TableContainer>
