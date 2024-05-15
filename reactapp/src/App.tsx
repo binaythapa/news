@@ -9,6 +9,7 @@ import GetTag from "./components/tag/GetTag";
 import GetArticle from "./components/article/GetArticle";
 import AddEditArticle from "./components/article/AddEditArticle";
 import ViewArticle from "./components/article/ViewArticle";
+import SignUp from "./components/signup/Signup";
 
 function App() {
   return (
@@ -44,6 +45,8 @@ function App() {
             path="/updatearticle/:id"
             element={<AddEditArticle editMode={true} />}
           />
+          {/* Routes for signup */}
+          <Route path="/signup" element={<SignUp />} />
         </Routes>
       </Router>
     </ChakraProvider>
