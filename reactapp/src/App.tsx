@@ -1,5 +1,11 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+} from "react-router-dom";
 import GetCategory from "./components/category/GetCategory";
 import AddEditCategory from "./components/category/AddEditCategory";
 import Navbar from "./components/Navbar";
@@ -10,8 +16,17 @@ import GetArticle from "./components/article/GetArticle";
 import AddEditArticle from "./components/article/AddEditArticle";
 import ViewArticle from "./components/article/ViewArticle";
 import SignUp from "./components/signup/Signup";
+import Login from "./components/login/Login";
+import { useAuth } from "./components/AuthProvider";
+
+function PrivateRoute({ children }: any) {
+  const token = useAuth();
+  return token ? children : <Navigate to="/login" />;
+}
 
 function App() {
+  const [loggedIn, setLoggedin] = useState(false);
+  // console.log(token);
   return (
     <ChakraProvider>
       <Router>
@@ -19,35 +34,97 @@ function App() {
         <Routes>
           {/* Routes for category  */}
           <Route
-            path="/addcategory"
-            element={<AddEditCategory editMode={false} />}
+            path="/viewcategory"
+            element={
+              <PrivateRoute>
+                <GetCategory />
+              </PrivateRoute>
+            }
           />
-          <Route path="/viewcategory" element={<GetCategory />} />
+          <Route
+            path="/addcategory"
+            element={
+              <PrivateRoute>
+                <AddEditCategory editMode={false} />
+              </PrivateRoute>
+            }
+          />
+
+          {/* <Route path="/viewcategory" element={<GetCategory />} /> */}
           <Route
             path="/updatecategory/:id"
-            element={<AddEditCategory editMode={true} />}
+            element={
+              <PrivateRoute>
+                <AddEditCategory editMode={true} />
+              </PrivateRoute>
+            }
           />
           {/* Routes for tags */}
-          <Route path="/addtag" element={<AddEditTag editMode={false} />} />
-          <Route path="/viewtag" element={<GetTag />} />
+          <Route
+            path="/addtag"
+            element={
+              <PrivateRoute>
+                <AddEditTag editMode={false} />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/viewtag"
+            element={
+              <PrivateRoute>
+                <GetTag />
+              </PrivateRoute>
+            }
+          />
+
           <Route
             path="/updatetag/:id"
-            element={<AddEditTag editMode={true} />}
+            element={
+              <PrivateRoute>
+                <AddEditTag editMode={true} />
+              </PrivateRoute>
+            }
           />
           {/* Routes for article */}
           <Route
             path="/addarticle"
-            element={<AddEditArticle editMode={false} />}
+            element={
+              <PrivateRoute>
+                <AddEditArticle editMode={false} />
+              </PrivateRoute>
+            }
           />
-          <Route path="/viewarticle" element={<GetArticle />} />
-          <Route path="/viewarticle/:id" element={<ViewArticle />} />
+          <Route
+            path="/viewarticle"
+            element={
+              <PrivateRoute>
+                <GetArticle />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/viewarticle/:id"
+            element={
+              <PrivateRoute>
+                <ViewArticle />{" "}
+              </PrivateRoute>
+            }
+          />
           <Route
             path="/updatearticle/:id"
             element={<AddEditArticle editMode={true} />}
           />
-          {/* Routes for signup */}
+
+          {/* Route for login */}
+          <Route path="/login" element={<Login />} />
+
+          {/* Route for signup */}
           <Route path="/signup" element={<SignUp />} />
+
+          {/* Check protected route */}
         </Routes>
+        {/* </AuthProvider> */}
       </Router>
     </ChakraProvider>
   );

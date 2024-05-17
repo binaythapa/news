@@ -1,10 +1,11 @@
 import React from "react";
 import { Box, Flex, Image } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "./AuthProvider";
 
 const Navbar = () => {
   const location = useLocation();
-
+  const token = useAuth();
   return (
     <Box bg="blue.500" px={4}>
       <Flex alignItems={"stretch"} justifyContent={"space-between"}>
