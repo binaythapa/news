@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
-  useNavigate,
 } from "react-router-dom";
 import GetCategory from "./components/category/GetCategory";
 import AddEditCategory from "./components/category/AddEditCategory";
@@ -20,17 +19,26 @@ import Login from "./components/login/Login";
 import { useAuth } from "./components/AuthProvider";
 
 function PrivateRoute({ children }: any) {
-  const token = useAuth();
-  return token ? children : <Navigate to="/login" />;
+  // const token = useAuth();
+  // return token ? children : <Navigate to="/login" />;
+
+  return children;
 }
 
 function App() {
-  const [loggedIn, setLoggedin] = useState(false);
   // console.log(token);
   return (
     <ChakraProvider>
       <Router>
-        <Navbar />
+        <Navbar
+          navs={[
+            { navLink: "/viewtag", menuName: "Tags" },
+            { navLink: "/viewcategory", menuName: "Category" },
+            { navLink: "/viewarticle", menuName: "Article" },
+            { navLink: "/login", menuName: "Login" },
+            { navLink: "/signup", menuName: "Signup" },
+          ]}
+        />
         <Routes>
           {/* Routes for category  */}
           <Route
