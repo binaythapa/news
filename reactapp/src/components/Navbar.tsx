@@ -25,7 +25,7 @@ const Navbar = ({ navs }: NavData) => {
         {/* Menu */}
         <Flex alignItems={"stretch"}>
           {navs.map((nav: NavItems) => (
-            <>
+            <div key={nav.menuName}>
               <Link to={nav.navLink}>
                 <Box
                   as="button"
@@ -43,7 +43,7 @@ const Navbar = ({ navs }: NavData) => {
                 </Box>
               </Link>
               <Spacer />
-            </>
+            </div>
           ))}
         </Flex>
       </Flex>

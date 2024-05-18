@@ -17,6 +17,7 @@ import ViewArticle from "./components/article/ViewArticle";
 import SignUp from "./components/signup/Signup";
 import Login from "./components/login/Login";
 import { useAuth } from "./components/AuthProvider";
+import LandingPage from "./components/landingPage/LandingPage";
 
 function PrivateRoute({ children }: any) {
   // const token = useAuth();
@@ -30,7 +31,8 @@ function App() {
   return (
     <ChakraProvider>
       <Router>
-        <Navbar
+        {/* <LandingPage /> */}
+        {/* <Navbar
           navs={[
             { navLink: "/viewtag", menuName: "Tags" },
             { navLink: "/viewcategory", menuName: "Category" },
@@ -38,8 +40,10 @@ function App() {
             { navLink: "/login", menuName: "Login" },
             { navLink: "/signup", menuName: "Signup" },
           ]}
-        />
+        /> */}
         <Routes>
+          <Route path="/" element={<LandingPage />} />
+
           {/* Routes for category  */}
           <Route
             path="/viewcategory"
